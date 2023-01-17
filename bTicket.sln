@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusTicket.Web", "BusTicket.Web\BusTicket.Web.csproj", "{D8733E60-FF97-4EF3-99FE-246475045107}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusTicket.Web", "BusTicket.Web\BusTicket.Web.csproj", "{D8733E60-FF97-4EF3-99FE-246475045107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusTicket.Data", "BusTicket.Data\BusTicket.Data.csproj", "{214D48CF-9A03-4628-9D3B-A40B64F67B4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusTicket.Dal", "BusTicket.Dal\BusTicket.Dal.csproj", "{C1FE1255-3344-4B2C-918B-E7D42E1B615E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{D8733E60-FF97-4EF3-99FE-246475045107}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8733E60-FF97-4EF3-99FE-246475045107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8733E60-FF97-4EF3-99FE-246475045107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{214D48CF-9A03-4628-9D3B-A40B64F67B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{214D48CF-9A03-4628-9D3B-A40B64F67B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{214D48CF-9A03-4628-9D3B-A40B64F67B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{214D48CF-9A03-4628-9D3B-A40B64F67B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1FE1255-3344-4B2C-918B-E7D42E1B615E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FE1255-3344-4B2C-918B-E7D42E1B615E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FE1255-3344-4B2C-918B-E7D42E1B615E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FE1255-3344-4B2C-918B-E7D42E1B615E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

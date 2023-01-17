@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BusExpeditionViewModel>
+@{
+    ViewData["Title"] = "Sefer Listesi";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Firma</th>
+                    <th>Tarih</th>
+                    <th>Saat</th>
+                    <th>Nereden</th>
+                    <th>Nereye</th>
+                    <th>Fiyat</th>
+                    <th>Detay</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Company</td>
+                            <td>@DateTime.Parse(item.DepartureDate).ToShortDateString()</td>
+                            <td>@DateTime.Parse(item.DepartureTime).ToShortTimeString()</td>
+                            <td>@item.DeparturePoint</td>
+                            <td>@item.ArrivalPoint</td>
+                            <td>@item.TicketPrice</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="@("#Detail-"+ item.IdBusExpedition)">Detay</button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        @await Html.PartialAsync("_DetailPartial", item)
+    }
+</div>

@@ -1,6 +1,11 @@
+using BusTicket.Dal.Repositories;
+using BusTicket.Data.Data;
+using BusTicket.Web.Interfaces;
+using BusTicket.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +28,17 @@ namespace BusTicket.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<BticketContext>(c =>
+                c.UseSqlServer(Configuration.GetConnectionString("BticketConnection")));
+
             services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddScoped<RoadPointViewModelService>();
+            services.AddScoped<IRoadPointViewModelService, CachedRoadPointViewModelService>();
+            services.AddScoped<IBusExpeditionViewModelService, BusExpeditionViewModelService>();
+            services.AddScoped<IPnrSearchViewModelService, PnrSearchViewModelService>();
+            services.AddScoped<TicketRepository>();
+            services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +67,7 @@ namespace BusTicket.Web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

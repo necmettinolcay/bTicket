@@ -1,0 +1,98 @@
+﻿@model PnrSearchViewModel
+@{
+    ViewData["Title"] = "Pnr Sorgula";
+}
+
+<div class="container">
+    <div class="b-example-divider"></div>
+    <h3>Bilet Bigileri</h3>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Pnr</th>
+                    <th>Firma</th>
+                    <th>Tarih</th>
+                    <th>Saat</th>
+                    <th>Nereden</th>
+                    <th>Nereye</th>
+                    <th>Koltuk</th>
+                    <th>Fiyat</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Ticket != null)
+                {
+                <tr>
+                    <td>@Model.Ticket.Pnr</td>
+                    <td>@Model.Ticket.Expedition.Company.CompanyName</td>
+                    <td>@Model.Ticket.Expedition.TravelDate.GetValueOrDefault().ToShortDateString()</td>
+                    <td>@Model.Ticket.Expedition.TravelDate.GetValueOrDefault().ToShortTimeString()</td>
+                    <td>@Model.Ticket.DeparturePoint.PointName</td>
+                    <td>@Model.Ticket.ArrivalPoint.PointName</td>
+                    <td>@Model.Ticket.IdChair</td>
+                    <td>@Model.Ticket.Price</td>
+                </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="b-example-divider"></div>
+    <h3>Yolcu Bigileri</h3>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Yolcu Adı</th>
+                    <th>E-Posta</th>
+                    <th>Telefon</th>
+                    <th>E-Bilet No</th>
+                    <th>Servis İsteği</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Ticket != null)
+                {
+                    <tr>
+                        <td>@Model.Ticket.Passenger.PassengerName</td>
+                        <td>@Model.Ticket.Passenger.Email</td>
+                        <td>@Model.Ticket.Passenger.Phone</td>
+                        <td>@Model.Ticket.EticketNo</td>
+                        <td>@Model.Ticket.Service</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="b-example-divider"></div>
+    <h3>Sefer Bigileri</h3>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Sefer Süresi</th>
+                    <th>Sefer Tipi</th>
+                    <th>Sefer No</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Ticket != null)
+                {
+                    <tr>
+                        <td>@Model.Ticket.Expedition.ExpectedTravelTime</td>
+                        <td>@Model.Ticket.Expedition.ExpeditionType.ExpeditionTypeName</td>
+                        <td>@Model.Ticket.Expedition.IdExpedition</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
